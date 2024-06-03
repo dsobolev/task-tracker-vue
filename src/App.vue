@@ -1,0 +1,39 @@
+<script setup lang="ts">
+// import HelloWorld from './components/HelloWorld.vue'
+</script>
+
+<template>
+  <header>
+    <h1>Track Your Tasks</h1>
+  </header>
+
+  <aside>
+    Info panel
+  </aside>
+
+  <main>
+    Grid here
+  </main>
+</template>
+
+<style scoped>
+header {
+  line-height: 1.5;
+  max-height: 100vh;
+}
+
+header h1 {
+  text-align: center;
+}
+
+aside {
+  float: left;
+  width: 20em;
+  margin-right: 2em;
+  background-color: #f5f5f5;
+}
+
+main {
+
+}
+</style>
