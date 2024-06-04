@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// import HelloWorld from './components/HelloWorld.vue'
+import TasksGrid from './components/TasksGrid.vue'
 </script>
 
 <template>
@@ -12,7 +12,7 @@
   </aside>
 
   <main>
-    Grid here
+    <TasksGrid />
   </main>
 </template>
 
