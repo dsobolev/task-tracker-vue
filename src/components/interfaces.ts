@@ -5,6 +5,7 @@ export enum TaskStatus {
 }
 
 export interface TaskEntity {
+    id: number;
     title: string;
     status: TaskStatus;
     description?: string;

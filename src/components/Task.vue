@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TaskStatus, TaskEntity } from './interfaces.ts'
+import { TaskStatus, type TaskEntity } from './interfaces'
 import { computed } from 'vue'
 
 const props = defineProps<{
