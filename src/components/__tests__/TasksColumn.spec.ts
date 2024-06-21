@@ -3,7 +3,7 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import TasksColumn from '../TasksColumn.vue'
 import Task from '../Task.vue'
-import tasksList from '../__mocks__/tasks.js' as []
+import { tasksList } from '../__mocks__/tasks.js'
 
 describe('TasksColumn', () => {
     it('renders title', () => {
