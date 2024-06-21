@@ -2,11 +2,12 @@ import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
 import Task from '../Task.vue'
-import { TaskStatus, TaskEntity } from '../../common/interfaces.ts'
+import { TaskStatus, type TaskEntity } from '../../common/interfaces'
 
 describe('Task', () => {
     it('shows title', () => {
         const task: TaskEntity = {
+            id: 42,
             title: 'Test Title',
             status: TaskStatus.InProgress
         }
@@ -16,6 +17,7 @@ describe('Task', () => {
 
     it('shows status', () => {
         const task: TaskEntity = {
+            id: 42,
             title: 'Test Title',
             status: TaskStatus.InProgress
         }
