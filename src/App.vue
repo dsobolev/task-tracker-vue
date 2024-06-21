@@ -29,11 +29,8 @@ header h1 {
 aside {
   float: left;
   width: 20em;
+  height: 100vw;
   margin-right: 2em;
   background-color: #f5f5f5;
-}
-
-main {
-
 }
 </style>

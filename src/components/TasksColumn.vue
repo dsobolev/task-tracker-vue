@@ -9,12 +9,16 @@ defineProps<{
 </script>
 
 <template>
-    <h3>{{ title }}</h3>
-    <Task v-for="task in tasks"
-          :data="task"
-          :key="task.id" />
+    <div>
+        <h3>{{ title }}</h3>
+        <Task v-for="task in tasks"
+              :data="task"
+              :key="task.id" />
+    </div>
 </template>
 
 <style scoped>
-
+h3 {
+    text-align: center;
+}
 </style>
