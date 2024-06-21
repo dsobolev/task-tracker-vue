@@ -6,28 +6,23 @@ const props = defineProps<{
     data: TaskEntity
 }>()
 
-const taskTitle = computed(() => {
-    return props.data.title
-})
+const taskTitle = computed(() => `#${props.data.id} ${props.data.title}`)
 
-const taskStatus = computed(() => {
-    switch (props.data.status) {
-        case TaskStatus.ToDo:
-            return 'To Do'
-        case TaskStatus.InProgress:
-            return 'In Progress'
-        case TaskStatus.Done:
-            return 'Done'
-    }
-})
+const taskId = computed(() => `#${props.data.id}`)
+
 </script>
 
 <template>
     <div>
         <h4>{{ taskTitle }}</h4>
-        <p>{{ taskStatus }}</p>
     </div>
 </template>
 
 <style scoped>
+div {
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
 </style>

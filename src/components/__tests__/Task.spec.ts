@@ -14,14 +14,4 @@ describe('Task', () => {
         const wrapper = mount(Task, { props: { data: task } })
         expect(wrapper.text()).toContain('Test Title')
     })
-
-    it('shows status', () => {
-        const task: TaskEntity = {
-            id: 42,
-            title: 'Test Title',
-            status: TaskStatus.InProgress
-        }
-        const wrapper = mount(Task, { props: { data: task } })
-        expect(wrapper.text()).toMatch(new RegExp('progress', 'i'))
-    })
 })
