@@ -12,7 +12,7 @@ import TasksGrid from './components/TasksGrid.vue'
   </aside>
 
   <main>
-    <TasksGrid />
+    <RouterView />
   </main>
 </template>
 
