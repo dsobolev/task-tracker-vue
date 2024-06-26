@@ -5,11 +5,7 @@ import { computed } from 'vue'
 const props = defineProps<{
     data: TaskEntity
 }>()
-
 const taskTitle = computed(() => `#${props.data.id} ${props.data.title}`)
-
-const taskId = computed(() => `#${props.data.id}`)
-
 </script>
 
 <template>
