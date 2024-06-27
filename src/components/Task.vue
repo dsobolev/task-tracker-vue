@@ -20,5 +20,6 @@ div {
     margin-bottom: 0.5em;
     border: 1px solid lightgrey;
     border-radius: 3px;
+    cursor: pointer;
 }
 </style>

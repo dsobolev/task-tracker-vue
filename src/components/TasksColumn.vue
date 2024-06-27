@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import { type TaskEntity } from '../common/interfaces'
 import Task from './Task.vue'
 
@@ -6,6 +7,13 @@ defineProps<{
     title: string,
     tasks: TaskEntity[]
 }>()
+
+const router = useRouter();
+
+function goToEdit(taskId: number) {
+    console.log('should switch to', taskId)
+    router.push({ name: 'taskEdit', params: { taskId } })
+}
 </script>
 
 <template>
@@ -13,7 +21,8 @@ defineProps<{
         <h3>{{ title }}</h3>
         <Task v-for="task in tasks"
               :data="task"
-              :key="task.id" />
+              :key="task.id"
+              @click="goToEdit(task.id)" />
     </div>
 </template>
 
