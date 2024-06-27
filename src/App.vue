@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TasksGrid from './components/TasksGrid.vue'
+import TasksGrid from '@components/TasksGrid.vue'
 </script>
 
 <template>

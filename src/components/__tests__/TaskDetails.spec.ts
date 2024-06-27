@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import TaskDetails from '@/components/TaskDetails.vue'
-import { TaskStatus } from '@/common/interfaces'
+import TaskDetails from '@components/TaskDetails.vue'
+import { TaskStatus } from '@common/interfaces'
 
 const task = {
     "id": 1,

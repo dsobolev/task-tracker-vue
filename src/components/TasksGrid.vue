@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { TaskStatus, type TaskEntity } from '../common/interfaces'
+import { TaskStatus, type TaskEntity } from '@common/interfaces'
 import TasksColumn from './TasksColumn.vue'
 
 const props = defineProps<{

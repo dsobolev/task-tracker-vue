@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { type TaskEntity } from '../common/interfaces'
+import { type TaskEntity } from '@common/interfaces'
 import Task from './Task.vue'
 
 defineProps<{
