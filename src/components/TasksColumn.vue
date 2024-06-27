@@ -11,7 +11,6 @@ defineProps<{
 const router = useRouter();
 
 function goToEdit(taskId: number) {
-    console.log('should switch to', taskId)
     router.push({ name: 'taskEdit', params: { taskId } })
 }
 </script>

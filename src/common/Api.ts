@@ -22,4 +22,10 @@ export class Api implements ApiInterface {
 
         return response.json()
     }
+
+    async getTask(id): Promise<{taskData: TaskEntity}> {
+        const response = await fetch(this.base + `/tasks/${id}`)
+
+        return response.json()
+    }
 }
