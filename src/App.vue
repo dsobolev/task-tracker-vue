@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import TasksGrid from '@components/TasksGrid.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+function newTask() {
+    router.push({ name: 'taskNew' })
+}
 </script>
 
 <template>
@@ -9,7 +16,7 @@ import TasksGrid from '@components/TasksGrid.vue'
 
   <div class="wrapper">
     <aside>
-      Info panel
+      <button @click="newTask">+ Add Task</button>
     </aside>
 
     <main>
@@ -38,12 +45,20 @@ aside {
   flex-basis: 20em;
   flex-grow: 1;
   height: 100vw;
+  padding-top: 1em;
+  padding-left: 1em;
   background-color: #f5f5f5;
 }
 
 main {
   flex-basis: 0;
   flex-grow: 999;
+}
+
+button {
+  padding: 0.5em 1em;
+  border: 1px solid dimgrey;
+  border-radius: 10px;
 }
 </style>
 

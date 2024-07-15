@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AllTasksView from '../views/AllTasksView.vue'
+import TaskNewView from '../views/TaskNewView.vue'
 import TaskEditView from '../views/TaskEditView.vue'
 
 const router = createRouter({
@@ -15,6 +16,12 @@ const router = createRouter({
             name: 'taskEdit',
             component: TaskEditView,
         },
+        {
+            path: '/task/new',
+            name: 'taskNew',
+            component: TaskNewView,
+        },
+
     ]
 })
 
