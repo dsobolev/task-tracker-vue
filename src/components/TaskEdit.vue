@@ -26,12 +26,14 @@ const taskStatus = computed(() => props.task
         <label>
             Title
             <input v-model="title"
-                   name="title">
+                   name="title"
+                   class="input">
         </label>
         <label>
             Status
             <select name="status"
-                    disabled>
+                    disabled
+                    class="input">
                 <option v-for="entry in statusLabels.entries()"
                         :selected="entry[0] === taskStatus"
                         :value="entry[0]">
@@ -41,19 +43,31 @@ const taskStatus = computed(() => props.task
         </label>
         <label>
             Description
-            <input v-modle="description"
-                   name="description">
+            <textarea v-modle="description"
+                   rows="5"
+                   name="description"
+                   class="input" />
         </label>
     </div>
 </template>
 
 <style scoped>
-select {
+label {
+    display: block;
+    margin-bottom: 2em;
+}
+
+input, textarea {
+    display: block;
+    width: 100%;
+}
+
+.input {
     font-size: 1em;
     padding: 0.5em 1em;
-    border: 1px solid dimgrey;
     border-radius: 10px;
-    margin-bottom: 1em;
     background-color: white;
+    border: 1px solid dimgrey;
 }
+
 </style>
