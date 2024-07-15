@@ -21,9 +21,10 @@ describe('TaskEdit', () => {
             expect(descInput.element.value).toBe('')
         })
 
-        it('shows default ToDo status', () => {
+        it('shows default ToDo status, not changeable', () => {
             const statusElem = wrapper.get('[name="status"]')
             expect(statusElem.element.value).toBe('' + TaskStatus.ToDo)
+            expect(statusElem.element.disabled).toBeTruthy()
         })
     })
 })

@@ -30,7 +30,8 @@ const taskStatus = computed(() => props.task
         </label>
         <label>
             Status
-            <select name="status">
+            <select name="status"
+                    disabled>
                 <option v-for="entry in statusLabels.entries()"
                         :selected="entry[0] === taskStatus"
                         :value="entry[0]">
