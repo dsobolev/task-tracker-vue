@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { type TaskEntity, TaskStatus } from '@common/interfaces';
+import { statusLabels } from '@common/maps'
+
 const props = defineProps<{
     task: TaskEntity,
 }>()
 
 const title = computed(() => `#${props.task.id} ${props.task.title}`)
+
 const statusText = computed(() => {
     let text = ''
     switch (props.task.status) {
@@ -22,6 +25,8 @@ const statusText = computed(() => {
 
     return text
 })
+
+
 </script>
 
 <template>
@@ -31,3 +36,9 @@ const statusText = computed(() => {
         <p>{{ props.task.description }}</p>
     </div>
 </template>
+
+<style scoped>
+h3 {
+    margin-bottom: 1em;
+}
+</style>
