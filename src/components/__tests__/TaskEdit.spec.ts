@@ -21,10 +21,22 @@ describe('TaskEdit', () => {
             expect(descInput.element.value).toBe('')
         })
 
-        it('shows default ToDo status, not changeable', () => {
-            const statusElem = wrapper.get('[name="status"]')
+        const statusElem = wrapper.get('[name="status"]')
+
+        it('shows default ToDo status', () => {
             expect(statusElem.element.value).toBe('' + TaskStatus.ToDo)
+        })
+
+        it('does not allow status change', () => {
             expect(statusElem.element.disabled).toBeTruthy()
         })
+
+        it.todo('emits event when saved')
+    })
+
+    describe('when task provided:', () => {
+        it.todo('shows task data right')
+        it.todo('shows task status right')
+        it.todo('status available to change')
     })
 })
