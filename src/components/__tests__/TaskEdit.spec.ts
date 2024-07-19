@@ -31,7 +31,10 @@ describe('TaskEdit', () => {
             expect(statusElem.element.disabled).toBeTruthy()
         })
 
-        it.todo('emits event when saved')
+        it('emits "save" event', async () => {
+            await wrapper.find('button').trigger('click')
+            expect(wrapper.emitted()).toHaveProperty('save')
+        })
     })
 
     describe('when task provided:', () => {
