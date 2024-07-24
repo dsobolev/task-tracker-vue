@@ -8,7 +8,7 @@ defineProps<{
     tasks: TaskEntity[]
 }>()
 
-const router = useRouter();
+const router = useRouter()
 
 function goToEdit(taskId: number) {
     router.push({ name: 'taskEdit', params: { taskId } })

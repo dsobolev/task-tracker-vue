@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { TaskStatus, type TaskEntity } from '@common/interfaces'
 import { statusLabels } from '@common/maps'
 
@@ -11,6 +12,11 @@ const isNoTitle = ref(false)
 const emit = defineEmits<{
     save: [payload: Partial<Omit<TaskEntity, "id">>]
 }>()
+
+const router = useRouter()
+function onClose() {
+    router.push({ name: 'tasksGrid' })
+}
 
 function onSave() {
     if (!title.value) {
@@ -41,7 +47,10 @@ const taskStatus = computed(() => props.task
 
 <template>
     <div>
-        <span class="close-btn">&#10005;</span>
+        <span class="close-btn"
+              @click="onClose">
+            &#10005;
+        </span>
 
         <p v-show="isNoTitle"
            class="warning">
