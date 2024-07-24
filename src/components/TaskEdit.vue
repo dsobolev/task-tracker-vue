@@ -7,22 +7,23 @@ const props = defineProps<{
     task?: TaskEntity,
 }>()
 
-const emit = defineEmits({
-    save: (payload: Partial<Omit<TaskEntity, "id">>) => {
-        if (payload.title === undefined || payload.title === '') {
-            return false
-        }
-
-        return true
-    }
-})
+const isNoTitle = ref(false)
+const emit = defineEmits<{
+    save: [payload: Partial<Omit<TaskEntity, "id">>]
+}>()
 
 function onSave() {
-    emit('save', {
-        title: title.value,
-        description: description.value,
-        status: status.value
-    })
+    if (!title.value) {
+        isNoTitle.value = true
+    } else {
+        isNoTitle.value = false
+
+        emit('save', {
+            title: title.value,
+            description: description.value,
+            status: status.value
+        })
+    }
 }
 
 const isNew = computed(() => props.task === null)
@@ -35,10 +36,18 @@ const taskStatus = computed(() => props.task
     ? props.task.status
     : TaskStatus.ToDo
 )
+
 </script>
 
 <template>
     <div>
+        <span class="close-btn">&#10005;</span>
+
+        <p v-show="isNoTitle"
+           class="warning">
+            Title is required
+        </p>
+
         <label>
             Title
             <input v-model="title"
@@ -66,11 +75,16 @@ const taskStatus = computed(() => props.task
                    name="description"
                    class="input" />
         </label>
+
         <button @click="onSave">Save</button>
     </div>
 </template>
 
 <style scoped>
+div {
+    position: relative;
+}
+
 label {
     display: block;
     margin-bottom: 2em;
@@ -79,6 +93,20 @@ label {
 input, textarea {
     display: block;
     width: 100%;
+}
+
+.warning {
+    color: red;
+}
+
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 0.5em;
+    display: inline-block;
+    font-size: 2em;
+    cursor: pointer;
+    user-select: none;
 }
 
 .input {

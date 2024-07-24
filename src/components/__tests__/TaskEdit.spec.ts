@@ -5,7 +5,9 @@ import { TaskStatus } from '@common/interfaces'
 
 describe('TaskEdit', () => {
     describe('when no task provided:', () => {
-        const wrapper = mount(TaskEdit)
+        const wrapper = mount(TaskEdit, {
+            attachTo: document.body
+        })
 
         it('shows labels for all fields', () => {
             expect(wrapper.text()).toContain('Title')
@@ -31,8 +33,16 @@ describe('TaskEdit', () => {
             expect(statusElem.element.disabled).toBeTruthy()
         })
 
-        it('emits "save" event', async () => {
+        it('shows warning if title is empty', async () => {
             await wrapper.find('button').trigger('click')
+            expect(wrapper.find('.warning').isVisible()).toBe(true)
+        })
+
+        it('emits "save" event, shows no warnings', async () => {
+            await wrapper.find('[name="title"]').setValue('test')
+            await wrapper.find('button').trigger('click')
+
+            expect(wrapper.find('.warning').isVisible()).toBe(false)
             expect(wrapper.emitted()).toHaveProperty('save')
         })
     })
