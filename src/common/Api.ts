@@ -1,11 +1,16 @@
 import { type TaskEntity } from './interfaces'
 
 export type allTasksResponse = {
-    tasks: TaskEntity[];
+    tasks: TaskEntity[]
+}
+
+export type TaskDetailsResponse = {
+    taskData: TaskEntity
 }
 
 export interface ApiInterface {
     getAllTasks(): Promise<allTasksResponse>;
+    getTask(id: number): Promise<TaskDetailsResponse>
 }
 
 export class Api implements ApiInterface {
@@ -23,7 +28,7 @@ export class Api implements ApiInterface {
         return response.json()
     }
 
-    async getTask(id): Promise<{taskData: TaskEntity}> {
+    async getTask(id: number): Promise<TaskDetailsResponse> {
         const response = await fetch(this.base + `/tasks/${id}`)
 
         return response.json()

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, inject } from 'vue'
 import { useRoute } from 'vue-router'
-import { type ApiInterface } from '@common/Api'
+import { type ApiInterface, type TaskDetailsResponse } from '@common/Api'
 import { type TaskEntity } from '@common/interfaces'
 import TaskDetails from '@components/TaskDetails.vue'
 
@@ -10,7 +10,7 @@ const Api = inject('Api') as ApiInterface
 const task = ref<TaskEntity | null>(null)
 const loading = ref(true)
 
-Api.getTask(route.params.taskId).then((data: {taskData: TaskEntity}) => {
+Api.getTask(route.params.taskId).then((data: TaskDetailsResponse) => {
     task.value = data.taskData
     loading.value = false
 })
