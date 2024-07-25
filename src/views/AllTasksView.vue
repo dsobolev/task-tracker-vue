@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { inject, ref, reactive } from 'vue';
-import { type ApiInterface, type allTasksResponse } from '@common/Api'
+import { inject, ref } from 'vue';
+import { type ApiInterface, type AllTasksResponse } from '@common/Api'
 import { TaskStatus, type TaskEntity } from '@common/interfaces'
 import TasksGrid from '@components/TasksGrid.vue'
 
@@ -8,7 +8,7 @@ const Api = inject('Api') as ApiInterface
 const loading = ref(true)
 const tasks = ref<TaskEntity[]>([])
 
-Api.getAllTasks().then((data: allTasksResponse) => {
+Api.getAllTasks().then((data: AllTasksResponse) => {
     tasks.value = data.tasks
     loading.value = false
 })
