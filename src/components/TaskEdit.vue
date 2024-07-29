@@ -46,7 +46,7 @@ const taskStatus = computed(() => props.task
 </script>
 
 <template>
-    <div>
+    <div class="main">
         <span class="close-btn"
               @click="onClose">
             &#10005;
@@ -84,15 +84,13 @@ const taskStatus = computed(() => props.task
                    name="description"
                    class="input" />
         </label>
-
-        <button @click="onSave">Save</button>
+        <div class="button-row">
+            <button @click="onSave">Save</button>
+        </div>
     </div>
 </template>
 
 <style scoped>
-div {
-    position: relative;
-}
 
 label {
     display: block;
@@ -102,6 +100,14 @@ label {
 input, textarea {
     display: block;
     width: 100%;
+}
+
+.main {
+    position: relative;
+    border-radius: 1em;
+    padding: 2em;
+    width: 50em;
+    background-color: white;
 }
 
 .warning {
@@ -124,6 +130,10 @@ input, textarea {
     border-radius: 10px;
     background-color: white;
     border: 1px solid dimgrey;
+}
+
+.button-row {
+    text-align: right;
 }
 
 </style>

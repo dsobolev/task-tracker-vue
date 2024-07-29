@@ -54,26 +54,22 @@ main {
   flex-basis: 0;
   flex-grow: 999;
 }
-
-button {
-  padding: 0.5em 1em;
-  border: 1px solid dimgrey;
-  border-radius: 10px;
-}
 </style>
 
 <style>
-  .single-task {
+  button {
+    padding: 0.5em 1em;
+    border: 1px solid dimgrey;
+    border-radius: 10px;
+  }
+
+  .task-view {
     height: 100vw;
     padding-top: 5em;
     background-color: #cfd8dc;
   }
 
-  .single-task > div {
+  .task-view > .task {
     margin: auto;
-    border-radius: 1em;
-    padding: 2em;
-    width: 50em;
-    background-color: white;
   }
 </style>
