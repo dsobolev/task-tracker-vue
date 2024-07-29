@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref, inject } from 'vue'
 import { useRouter } from 'vue-router'
-import { type ApiInterface, type allTasksResponse } from '@common/Api'
-import { type TaskEntity } from '@common/interfaces'
+import { type ApiInterface, type CreateTaskPayload } from '@common/Api'
 import TaskEdit from '@components/TaskEdit.vue'
 
 const Api = inject('Api') as ApiInterface
@@ -11,7 +10,7 @@ const router = useRouter()
 const success = ref(false)
 const error = ref(false)
 
-function onTaskSave(payload: Partial<Omit<TaskEntity, "id">>) {
+function onTaskSave(payload: CreateTaskPayload) {
     Api.createTask(payload)
         .then(() => {
             success.value = true

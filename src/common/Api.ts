@@ -8,10 +8,12 @@ export type TaskDetailsResponse = {
     taskData: TaskEntity
 }
 
+export type CreateTaskPayload = Partial<Omit<TaskEntity, "id">>
+
 export interface ApiInterface {
     getAllTasks(): Promise<AllTasksResponse>;
     getTask(id: number): Promise<TaskDetailsResponse>;
-    createTask(payload: Partial<Omit<TaskEntity, "id">>): Promise<any>;
+    createTask(payload: CreateTaskPayload): Promise<any>;
 }
 
 export class Api implements ApiInterface {
@@ -35,7 +37,7 @@ export class Api implements ApiInterface {
         return response.json()
     }
 
-    async createTask(payload: Partial<Omit<TaskEntity, "id">>): Promise<boolean> {
+    async createTask(payload: CreateTaskPayload): Promise<boolean> {
         const response = await fetch(this.base + '/tasks/', {
             method: "POST",
             body: JSON.stringify(payload)

@@ -32,8 +32,6 @@ function onSave() {
     }
 }
 
-const isNew = computed(() => props.task === null)
-
 const title = ref('')
 const description = ref('')
 const status = ref(0)
@@ -72,7 +70,8 @@ const taskStatus = computed(() => props.task
                     class="input">
                 <option v-for="entry in statusLabels.entries()"
                         :selected="entry[0] === taskStatus"
-                        :value="entry[0]">
+                        :value="entry[0]"
+                        :key="entry[0]">
                     {{ entry[1] }}
                 </option>
             </select>

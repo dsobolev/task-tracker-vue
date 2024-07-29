@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { inject, ref } from 'vue';
 import { type ApiInterface, type AllTasksResponse } from '@common/Api'
-import { TaskStatus, type TaskEntity } from '@common/interfaces'
+import { type TaskEntity } from '@common/interfaces'
 import TasksGrid from '@components/TasksGrid.vue'
 
 const Api = inject('Api') as ApiInterface

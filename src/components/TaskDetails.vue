@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { type TaskEntity, TaskStatus } from '@common/interfaces';
-import { statusLabels } from '@common/maps'
 
 const props = defineProps<{
     task: TaskEntity,
