@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { type TaskEntity } from '@common/interfaces'
-import Task from './Task.vue'
+import TaskItem from './TaskItem.vue'
 
 defineProps<{
     title: string,
@@ -18,7 +18,7 @@ function goToEdit(taskId: number) {
 <template>
     <div>
         <h3>{{ title }}</h3>
-        <Task v-for="task in tasks"
+        <TaskItem v-for="task in tasks"
               :data="task"
               :key="task.id"
               @click="goToEdit(task.id)" />
