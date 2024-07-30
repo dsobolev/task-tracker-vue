@@ -62,6 +62,12 @@ main {
     border-radius: 10px;
   }
 
+  .close-btn {
+    position: absolute;
+    top: 0;
+    right: 0.5em;
+  }
+
   .task-view {
     height: 100vw;
     padding-top: 5em;
@@ -70,5 +76,13 @@ main {
 
   .task-view > .task {
     margin: auto;
+  }
+
+  .task {
+    position: relative;
+    border-radius: 1em;
+    padding: 2em;
+    width: 50em;
+    background-color: white;
   }
 </style>

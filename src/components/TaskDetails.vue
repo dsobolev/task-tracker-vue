@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { type TaskEntity, TaskStatus } from '@common/interfaces';
+import { computed } from 'vue'
+import { type TaskEntity, TaskStatus } from '@common/interfaces'
+import BackToGrid from '@components/BackToGrid.vue'
 
 const props = defineProps<{
     task: TaskEntity,
@@ -30,6 +31,8 @@ const statusText = computed(() => {
 
 <template>
     <div>
+        <BackToGrid class="close-btn" />
+
         <h3>{{ title }}</h3>
         <span>{{ statusText }}</span>
         <p>{{ props.task.description }}</p>

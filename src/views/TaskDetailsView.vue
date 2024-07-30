@@ -10,16 +10,17 @@ const Api = inject('Api') as ApiInterface
 const task = ref<TaskEntity | null>(null)
 const loading = ref(true)
 
-Api.getTask(route.params.taskId).then((data: TaskDetailsResponse) => {
-    task.value = data.taskData
+Api.getTask(parseInt(route.params.taskId as string)).then((data: TaskDetailsResponse) => {
+    task.value = data.taskData as TaskEntity
     loading.value = false
 })
 </script>
 
 <template>
-    <div class="single-task">
+    <div class="task-view">
         <div v-if="loading">loading...</div>
-        <TaskDetails v-else
+        <TaskDetails class="task"
+                     v-else
                      :task="task" />
     </div>
 </template>

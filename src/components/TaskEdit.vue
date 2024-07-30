@@ -39,7 +39,7 @@ const taskStatus = computed(() => props.task
 </script>
 
 <template>
-    <div class="main">
+    <div>
         <BackToGrid class="close-btn" />
 
         <p v-show="isNoTitle"
@@ -93,22 +93,8 @@ input, textarea {
     width: 100%;
 }
 
-.main {
-    position: relative;
-    border-radius: 1em;
-    padding: 2em;
-    width: 50em;
-    background-color: white;
-}
-
 .warning {
     color: red;
-}
-
-.close-btn {
-    position: absolute;
-    top: 0;
-    right: 0.5em;
 }
 
 .input {
