@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
 import { TaskStatus, type TaskEntity } from '@common/interfaces'
 import { statusLabels } from '@common/maps'
+import BackToGrid from '@components/BackToGrid.vue'
 
 const props = defineProps<{
     task?: TaskEntity,
@@ -12,11 +12,6 @@ const isNoTitle = ref(false)
 const emit = defineEmits<{
     save: [payload: Partial<Omit<TaskEntity, "id">>]
 }>()
-
-const router = useRouter()
-function onClose() {
-    router.push({ name: 'tasksGrid' })
-}
 
 function onSave() {
     if (!title.value) {
@@ -45,10 +40,7 @@ const taskStatus = computed(() => props.task
 
 <template>
     <div class="main">
-        <span class="close-btn"
-              @click="onClose">
-            &#10005;
-        </span>
+        <BackToGrid class="close-btn" />
 
         <p v-show="isNoTitle"
            class="warning">
@@ -117,10 +109,6 @@ input, textarea {
     position: absolute;
     top: 0;
     right: 0.5em;
-    display: inline-block;
-    font-size: 2em;
-    cursor: pointer;
-    user-select: none;
 }
 
 .input {
