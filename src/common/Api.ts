@@ -38,7 +38,7 @@ export class Api implements ApiInterface {
     }
 
     async createTask(payload: CreateTaskPayload): Promise<boolean> {
-        const response = await fetch(this.base + '/tasks/', {
+        const response = await fetch(this.base + '/tasks', {
             method: "POST",
             body: JSON.stringify(payload)
         })
