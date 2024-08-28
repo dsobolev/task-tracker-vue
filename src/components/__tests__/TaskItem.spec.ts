@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import Task from '@components/Task.vue'
+import Task from '@components/TaskItem.vue'
 import { TaskStatus, type TaskEntity } from '@common/interfaces'
 
 describe('Task', () => {
