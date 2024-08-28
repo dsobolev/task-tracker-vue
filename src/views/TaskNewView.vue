@@ -3,6 +3,7 @@ import { ref, inject } from 'vue'
 import { useRouter } from 'vue-router'
 import { type ApiInterface, type CreateTaskPayload } from '@common/Api'
 import TaskEdit from '@components/TaskEdit.vue'
+import RequestProcess from '@components/RequestProcess.vue'
 
 const Api = inject('Api') as ApiInterface
 const router = useRouter()
@@ -27,40 +28,11 @@ function onTaskSave(payload: CreateTaskPayload) {
 
 <template>
     <div class="task-view">
-        <div class="flashes">
-            <p v-show="success"
-               class="flash-msg success">
-                Saved succesfully!
-            </p>
-            <p v-show="error"
-               class="flash-msg error">
-                Not saved! See error in the console.
-            </p>
-        </div>
+        <RequestProcess :is-success="success"
+                        success-msg="Saved succesfully!"
+                        :is-error="error"
+                        error-msg="Not saved! See error in the console." />
         <TaskEdit class="task"
                   @save="onTaskSave"/>
     </div>
 </template>
-
-<style scoped>
-.flashes {
-    margin-bottom: 2em;
-    text-align: center;
-}
-
-.flash-msg {
-    display: inline-block;
-    border-radius: 0.5em;
-    padding: 1em 2em;
-}
-
-.success {
-    color: #4caf50;
-    background-color: #dcedc8;
-}
-
-.error {
-    color: #f44336;
-    background-color: #ffcdd2;
-}
-</style>
