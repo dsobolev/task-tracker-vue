@@ -52,7 +52,7 @@ describe('TaskEdit', () => {
         const task = {
             "id": 42,
             "title": "Title 1",
-            "status": 1,
+            "status": TaskStatus.InProgress,
             "description": "Lorem ipsum"
         }
 
@@ -68,7 +68,13 @@ describe('TaskEdit', () => {
             expect(descInput.element.value).toBe(task.description)
         })
 
-        it.todo('shows task status right')
-        it.todo('status available to change')
+        const statusElem = wrapper.get('[name="status"]')
+        it('shows task status right', () => {
+            expect(statusElem.element.value).toBe('' + task.status)
+        })
+
+        it('status available to change', () => {
+            expect(statusElem.element.disabled).toBeFalsy()
+        })
     })
 })

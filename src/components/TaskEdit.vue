@@ -29,13 +29,14 @@ function onSave() {
 
 const title = ref(props.task?.title || '')
 const description = ref(props.task?.description || '')
-const status = ref(0)
+const status = ref(props.task?.status || 0)
 
 const taskStatus = computed(() => props.task
     ? props.task.status
     : TaskStatus.ToDo
 )
 
+const isTaskEmpty = computed(() => props.task === undefined)
 </script>
 
 <template>
@@ -58,7 +59,7 @@ const taskStatus = computed(() => props.task
             Status
             <select v-model="status"
                     name="status"
-                    disabled
+                    :disabled="isTaskEmpty"
                     class="input">
                 <option v-for="entry in statusLabels.entries()"
                         :selected="entry[0] === taskStatus"
