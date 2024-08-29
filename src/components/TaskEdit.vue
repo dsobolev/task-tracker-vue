@@ -27,8 +27,8 @@ function onSave() {
     }
 }
 
-const title = ref('')
-const description = ref('')
+const title = ref(props.task?.title || '')
+const description = ref(props.task?.description || '')
 const status = ref(0)
 
 const taskStatus = computed(() => props.task

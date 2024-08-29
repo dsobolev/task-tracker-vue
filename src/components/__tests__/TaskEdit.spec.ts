@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
+import { nextTick } from 'vue'
 import TaskEdit from '@components/TaskEdit.vue'
 import { TaskStatus } from '@common/interfaces'
 
@@ -48,7 +49,25 @@ describe('TaskEdit', () => {
     })
 
     describe('when task provided:', () => {
-        it.todo('shows task data right')
+        const task = {
+            "id": 42,
+            "title": "Title 1",
+            "status": 1,
+            "description": "Lorem ipsum"
+        }
+
+        const wrapper = mount(TaskEdit, {
+            props: { task }
+        })
+
+        it('shows task title/description right', async () => {
+            const titleInput = wrapper.get('[name="title"]')
+            expect(titleInput.element.value).toBe(task.title)
+
+            const descInput = wrapper.get('[name="description"]')
+            expect(descInput.element.value).toBe(task.description)
+        })
+
         it.todo('shows task status right')
         it.todo('status available to change')
     })
