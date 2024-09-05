@@ -1,25 +1,34 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { RouterLink } from 'vue-router'
 import { type TaskEntity, TaskStatus } from '@common/interfaces'
 import BackToGrid from '@components/BackToGrid.vue'
 
-const props = defineProps<{
-    task: TaskEntity,
-}>()
+interface TaskParam {
+    task?: TaskEntity | null
+}
 
-const title = computed(() => `#${props.task.id} ${props.task.title}`)
+const props = withDefaults(defineProps<TaskParam>(), {
+    task: null
+})
+
+const title = computed(() => props.task !==null
+    ? `#${props.task.id} ${props.task.title}`
+    : ''
+)
 
 const statusText = computed(() => {
     let text = ''
-    switch (props.task.status) {
-        case TaskStatus.ToDo:
-            text = 'To Do'
-            break;
+    switch (props.task?.status) {
         case TaskStatus.InProgress:
             text = 'In Progress'
             break;
         case TaskStatus.Done:
             text = 'Done'
+            break;
+        case TaskStatus.ToDo:
+        default:
+            text = 'To Do'
             break;
     }
 
@@ -35,12 +44,23 @@ const statusText = computed(() => {
 
         <h3>{{ title }}</h3>
         <span>{{ statusText }}</span>
-        <p>{{ props.task.description }}</p>
+        <p>{{ props.task?.description }}</p>
+
+        <RouterLink :to="{name: 'taskEdit', params: {taskId: task?.id}}"
+                    v-slot="{ navigate }">
+            <button @click="navigate">Edit</button>
+        </RouterLink>
     </div>
 </template>
 
 <style scoped>
-h3 {
+h3,
+p {
     margin-bottom: 1em;
+}
+
+button {
+    font-size: 1rem;
+    letter-spacing: 1px;
 }
 </style>

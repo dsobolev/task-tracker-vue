@@ -4,9 +4,13 @@ import { TaskStatus, type TaskEntity } from '@common/interfaces'
 import { statusLabels } from '@common/maps'
 import BackToGrid from '@components/BackToGrid.vue'
 
-const props = defineProps<{
-    task?: TaskEntity,
-}>()
+interface TaskProp {
+    task?: TaskEntity | null
+}
+
+const props = withDefaults(defineProps<TaskProp>(), {
+    task: null
+})
 
 const isNoTitle = ref(false)
 const emit = defineEmits<{
@@ -36,7 +40,7 @@ const taskStatus = computed(() => props.task
     : TaskStatus.ToDo
 )
 
-const isTaskEmpty = computed(() => props.task === undefined)
+const isTaskEmpty = computed(() => props.task === null)
 </script>
 
 <template>
