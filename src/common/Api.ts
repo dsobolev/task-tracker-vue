@@ -13,7 +13,8 @@ export type CreateTaskPayload = Partial<Omit<TaskEntity, "id">>
 export interface ApiInterface {
     getAllTasks(): Promise<AllTasksResponse>;
     getTask(id: number): Promise<TaskDetailsResponse>;
-    createTask(payload: CreateTaskPayload): Promise<any>;
+    createTask(payload: CreateTaskPayload): Promise<boolean>;
+    updateTask(id: number, payload: CreateTaskPayload): Promise<boolean>;
 }
 
 export class Api implements ApiInterface {
@@ -40,6 +41,19 @@ export class Api implements ApiInterface {
     async createTask(payload: CreateTaskPayload): Promise<boolean> {
         const response = await fetch(this.base + '/tasks', {
             method: "POST",
+            body: JSON.stringify(payload)
+        })
+
+        if (!response.ok) {
+            throw new Error('Task not saved')
+        }
+
+        return true
+    }
+
+    async updateTask(id: number, payload: CreateTaskPayload): Promise<boolean> {
+        const response = await fetch(this.base + `/tasks/${id}`, {
+            method: "PUT",
             body: JSON.stringify(payload)
         })
 
