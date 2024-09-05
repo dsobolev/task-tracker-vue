@@ -45,7 +45,8 @@ function onTaskSave(payload: CreateTaskPayload) {
                         success-msg="Updated succesfully!"
                         :is-error="error"
                         error-msg="Not updated! See error in the console." />
-        <TaskEdit :task="task"
+        <TaskEdit v-if="task !== null"
+                  :task="task"
                   class="task"
                   @save="onTaskSave"/>
     </div>
