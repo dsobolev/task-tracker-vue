@@ -17,17 +17,38 @@ const emit = defineEmits<{
     save: [payload: Partial<Omit<TaskEntity, "id">>]
 }>()
 
+type Payload = Partial<{
+    title: string,
+    description: string,
+    status: number,
+}>
+
+const initialValue: Payload = {
+    title: props.task?.title || '',
+    description: props.task?.description || '',
+    status: props.task?.status || 0,
+}
+
 function onSave() {
     if (!title.value) {
         isNoTitle.value = true
     } else {
         isNoTitle.value = false
 
-        emit('save', {
-            title: title.value,
-            description: description.value,
-            status: status.value
-        })
+        const payload: Payload = {}
+        if (title.value !== initialValue.title) {
+            payload['title'] = title.value
+        }
+
+        if (description.value !== initialValue.description) {
+            payload['description'] = description.value
+        }
+
+        if (status.value !== initialValue.status) {
+            payload['status'] = status.value
+        }
+
+        emit('save', payload)
     }
 }
 
