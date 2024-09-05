@@ -11,7 +11,7 @@ defineProps<{
 const router = useRouter()
 
 function goToEdit(taskId: number) {
-    router.push({ name: 'taskEdit', params: { taskId } })
+    router.push({ name: 'taskView', params: { taskId } })
 }
 </script>
 

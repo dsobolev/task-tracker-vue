@@ -19,8 +19,9 @@ Api.getTask(parseInt(route.params.taskId as string)).then((data: TaskDetailsResp
 <template>
     <div class="task-view">
         <div v-if="loading">loading...</div>
-        <TaskDetails class="task"
-                     v-else
-                     :task="task" />
+        <template v-else>
+            <TaskDetails class="task"
+                         :task="task" />
+        </template>
     </div>
 </template>
